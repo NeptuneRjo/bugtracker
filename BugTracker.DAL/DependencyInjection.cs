@@ -17,9 +17,14 @@ namespace BugTracker.DAL
 
             services.AddDbContext<DataContext>(options =>
             {
-                var defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
+                string? defaultConnectionString = Configuration.GetConnectionString("DefaultConnection");
 
-                options.UseSqlServer(defaultConnectionString);
+                if (defaultConnectionString is null)
+                {
+                    throw new Exception("ConnectionStrings.DefaultConnection is null");
+                }
+
+                options.UseNpgsql(defaultConnectionString);
             });
         }
     }
