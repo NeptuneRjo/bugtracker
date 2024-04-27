@@ -15,6 +15,10 @@ namespace BugTracker.DAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Issue>().ToTable("Issue");
+            modelBuilder.Entity<Comment>().ToTable("Comment");
+            modelBuilder.Entity<Project>().ToTable("Project");
+
             modelBuilder.Entity<Project>()
                 .HasMany(e => e.Issues)
                 .WithOne(e => e.Project)
