@@ -1,5 +1,8 @@
-﻿namespace BugTracker.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BugTracker.DAL.Entities
 {
+    [Table("Comments")]
     public class Comment
     {
         public int Id { get; set; }
@@ -10,5 +13,8 @@
         public int IssueId { get; set; }
         // Required reference navigation to principle
         public Issue Issue { get; set; }
+
+        public int AuthorId { get; set; }
+        public Account Author { get; set; }
     }
 }
