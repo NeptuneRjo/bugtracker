@@ -17,6 +17,7 @@ namespace BugTracker.DAL.Entities
         public DateTime CreatedAt { get; set; }
         public ICollection<Project> CreatedProjects { get; set; }
         public ICollection<Project> CollaborationProjects { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
 
         public Account()
@@ -24,6 +25,7 @@ namespace BugTracker.DAL.Entities
             CreatedAt = DateTime.UtcNow;
             CreatedProjects = new List<Project>();
             CollaborationProjects = new List<Project>();
+            Comments = new List<Comment>();
         }
     }
 }
