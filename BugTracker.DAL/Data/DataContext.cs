@@ -32,7 +32,7 @@ namespace BugTracker.DAL.Data
                 .WithOne(e => e.Issue)
                 .HasForeignKey(e => e.IssueId)
                 .OnDelete(DeleteBehavior.Cascade);
-        
+
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.CreatedProjects)
                 .WithOne(e => e.Creator)
@@ -42,6 +42,12 @@ namespace BugTracker.DAL.Data
             modelBuilder.Entity<Account>()
                 .HasMany(e => e.CollaborationProjects)
                 .WithMany(e => e.Collaborators);
+
+            modelBuilder.Entity<Account>()
+                .HasMany(e => e.Comments)
+                .WithOne(e => e.Author)
+                .HasForeignKey(e => e.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
